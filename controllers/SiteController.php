@@ -7,8 +7,8 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
+use app\models\Marcadores;
+use yii\data\ActiveDataProvider;
 
 class SiteController extends Controller
 {
@@ -35,7 +35,34 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $query = Marcadores::find()->select("marcadores.*")->where("tipo = 'Publico'");
+        
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+        
+        return $this->render('index',[
+            'dataProvider' => $dataProvider,
+            'publicos' => 'active',
+            'privados' => '',
+            'admin' => '',
+        ]);
+    }
+
+    public function actionPrivados()
+    {
+        $query = Marcadores::find()->select("marcadores.*")->where("tipo = 'Privado'");
+        
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+        
+        return $this->render('index',[
+            'dataProvider' => $dataProvider,
+            'publicos' => '',
+            'privados' => 'active',
+            'admin' => '',
+        ]);
     }
 
 }

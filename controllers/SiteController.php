@@ -65,4 +65,25 @@ class SiteController extends Controller
         ]);
     }
 
+    public function actionAdmin()
+    {
+        $this->layout = 'admin';
+        $query = Marcadores::find()->select("marcadores.*");
+        
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+        
+        return $this->render('admin',[
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionNuevo()
+    {
+        $this->layout = 'admin';
+        
+        return $this->render('nuevo');
+    }
+
 }

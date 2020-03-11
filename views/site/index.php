@@ -33,7 +33,7 @@ $this->registerJs($script2);
     <ul class="nav nav-pills" style="display: inline-block;">
         <li role="presentation" class="<?= $publicos ?>"><a href="<?=  Url::toRoute(['site/index']) ?>">Publicos</a></li>
         <li role="presentation" class="<?= $privados ?>"><a href="<?=  Url::toRoute(['site/privados']) ?>">Privados</a></li>
-        <li role="presentation" class="<?= $admin ?>"><a href="#">Admin</a></li>
+        <li role="presentation" class="<?= $admin ?>"><a href="<?=  Url::toRoute(['site/admin']) ?>">Admin</a></li>
     </ul>
 </div>
 <?= GridView::widget([

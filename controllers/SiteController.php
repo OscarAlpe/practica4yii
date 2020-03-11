@@ -51,7 +51,7 @@ class SiteController extends Controller
 
     public function actionPrivados()
     {
-        $query = Marcadores::find()->select("marcadores.*")->where("tipo = 'Privado'");
+        $query = Marcadores::find()->select("marcadores.*");
         
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
